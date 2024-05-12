@@ -3,7 +3,7 @@ public class City {
     private float lat;
     private float lon;
 
-    public City(String name, float lat, float lon){
+    public City(String name){
         this.lat = lat;
         this.lon = lon;
         this.name = name;

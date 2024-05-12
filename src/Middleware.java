@@ -31,10 +31,10 @@ public class Middleware {
                 while ((line = br.readLine()) != null) {
                     System.out.println(line);
                     // create city object from line
-                    String[] commaSep = line.split(",");
-                    float lat = Float.parseFloat(commaSep[1]);
-                    float lon = Float.parseFloat(commaSep[2]);
-                    cities.add(new City(commaSep[0], lat, lon));
+                    String[] commaSep = line.split(";");
+                    // float lat = Float.parseFloat(commaSep[1]);
+                    // float lon = Float.parseFloat(commaSep[2]);
+                    cities.add(new City(commaSep[0]));
                 }
             }
         } catch (IOException e) {
@@ -51,7 +51,7 @@ public class Middleware {
         BufferedWriter bw = new BufferedWriter(fw);
         PrintWriter out = new PrintWriter(bw)) {
 
-       out.println(name + ",4.3,3.4");
+       out.println(name);
        System.out.println("Data appended to " + fileName);
 
    } catch (NumberFormatException e) {

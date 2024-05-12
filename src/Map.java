@@ -23,7 +23,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
-
+import java.net.URI;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.table.DefaultTableModel;
@@ -41,10 +41,11 @@ public class Map extends JFrame {
         UIManager.put("TextField.font", new Font("Arial", Font.PLAIN, 30));
         UIManager.put("Button.font", new Font("Arial", Font.PLAIN, 30));
         UIManager.put("Table.font", new Font("Arial", Font.PLAIN, 25));
+        UIManager.put("TableHeader.font", new Font("Arial", Font.PLAIN, 18));
 
         JLabel labelCity = new JLabel("Enter City:");
         JTextField textUsername = new JTextField(10);
-        JButton buttonLogin = new JButton("Login");
+        JButton buttonLogin = new JButton("Add City");
         setLayout(new GridLayout(1, 3));
 
         Middleware mw = new Middleware(
@@ -55,10 +56,11 @@ public class Map extends JFrame {
 
         List<City> savedCities = mw.getCities();
         // TODO call api to get actual weather
+        WeatherAPI wapi = new WeatherAPI();
         String data[][] = new String[savedCities.size()][2];
         for (int i = 0; i < savedCities.size(); i++) {
             data[i][0] = savedCities.get(i).getName();
-            data[i][1] = "6";
+            data[i][1] = wapi.test(data[i][0]);
         }
 
         String column[] = { "City", "Temperature" };
@@ -117,11 +119,13 @@ public class Map extends JFrame {
                 mw.saveCity(city);
 
                 List<City> savedCities = mw.getCities();
+                WeatherAPI wapi = new WeatherAPI();
                 // TODO call api to get actual weather
                 String data[][] = new String[savedCities.size()][2];
                 for (int i = 0; i < savedCities.size(); i++) {
                     data[i][0] = savedCities.get(i).getName();
-                    data[i][1] = "6";
+
+                    data[i][1] = wapi.test(data[i][0]);
                 }
 
                 String column[] = { "City", "Temperature" };
