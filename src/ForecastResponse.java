@@ -1,5 +1,4 @@
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 class ForecastResponse {
@@ -44,7 +43,7 @@ class ForecastResponse {
         this.name = name;
     }
 
-	@JsonIgnoreProperties(ignoreUnknown = true)
+    @JsonIgnoreProperties(ignoreUnknown = true)
     // Nested classes for nested properties
     public static class Coord {
         private double lon;
@@ -69,7 +68,7 @@ class ForecastResponse {
         }
     }
 
-	@JsonIgnoreProperties(ignoreUnknown = true)
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Weather {
         private int id;
         private String main;
@@ -111,7 +110,7 @@ class ForecastResponse {
         }
     }
 
-	@JsonIgnoreProperties(ignoreUnknown = true)
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class MainData {
         private double temp;
         private int pressure;

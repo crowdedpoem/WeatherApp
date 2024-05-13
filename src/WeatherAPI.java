@@ -9,14 +9,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class WeatherAPI {
 
-
    public String parseText(String jsonText) {
-
 		ObjectMapper mapper = new ObjectMapper();
 		ForecastResponse re = null;
 		try {
 			re = mapper.readValue(jsonText, ForecastResponse.class);
-            System.out.println(re.getMain().getTemp());
             return String.valueOf(re.getMain().getTemp());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -25,7 +22,7 @@ public class WeatherAPI {
 	}
 
 
-    public String test(String location) {
+    public String getWeatherFor(String location) {
         try {
             location = URLEncoder.encode(location, "UTF-8");
         } catch (UnsupportedEncodingException e) {
@@ -46,9 +43,5 @@ public class WeatherAPI {
         }
         String jsonText = response.body();
        return this.parseText(jsonText);
-        // System.out.println(jsonText);
-
-
     }
-
 }
